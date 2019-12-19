@@ -7,7 +7,9 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VCharts from 'v-charts'
 
+Vue.use(VCharts)
 Vue.use(ElementUI);
 Vue.prototype.$axios = http
 Vue.prototype.$dayjs = dayjs

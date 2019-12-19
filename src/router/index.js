@@ -6,17 +6,91 @@ Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        name: 'home',
-        component: Home
+        component: Home,
+        children: [{
+            path: '/',
+            name: 'index',
+            component: () =>
+                import ('../views/Index.vue')
+        }]
     },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'pagination',
+            name: 'pagination',
+            component: () =>
+                import ('../views/Pagination.vue')
+        }]
+    },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'tagPage',
+            name: 'tagPage',
+            component: () =>
+                import ('../views/TagPage.vue')
+        }]
+    },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'updatePic',
+            name: 'updatePic',
+            component: () =>
+                import ('../views/UpdatePic.vue')
+        }]
+    },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'published',
+            name: 'published',
+            component: () =>
+                import ('../views/Published.vue')
+        }]
+    },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'publish',
+            name: 'publish',
+            component: () =>
+                import ('../views/Publish.vue')
+        }]
+    },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'statics',
+            name: 'statics',
+            component: () =>
+                import ('../views/Statics.vue')
+        }]
+    },
+    {
+        path: '/',
+        component: Home,
+        children: [{
+            path: 'exportExcell',
+            name: 'exportExcell',
+            component: () =>
+                import ('../views/ExportExcell.vue')
+        }]
+    },
+
+
     {
         path: '/about',
         name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/About.vue')
+            import ('../views/About.vue')
     },
     {
         path: '/login',
