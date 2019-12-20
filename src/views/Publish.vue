@@ -3,10 +3,10 @@
     <div class="tops">
       <div class="top">
         <div>
-          <input type="button" value="查看" />
+          <!-- <input type="button" value="查看" /> -->
         </div>
         <div>
-          <input type="button" value="发布" />
+          <!-- <input type="button" value="发布" /> -->
         </div>
       </div>
     </div>

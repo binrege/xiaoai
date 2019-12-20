@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <template>
       <el-table :data="ArticleData" style="width: 100%">
         <el-table-column align="center" label="编号" type="index"  width="60"></el-table-column>
@@ -94,4 +94,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.home{
+  height: 100vh;
+}
 </style>

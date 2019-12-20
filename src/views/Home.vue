@@ -152,7 +152,7 @@ export default {
   display: flex;
   justify-content: space-between;
   width: 100vm;
-  height: 100vh;
+  // height: 100vh;
 
   overflow: hidden;
 }

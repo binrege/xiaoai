@@ -19,6 +19,10 @@ export default {
       localStorage.removeItem("users")
       this.$router.push("/login")
       localStorage.removeItem("ids")
+       this.$message({
+        type: "success",
+        message: "欢迎下次光临"
+      });
     }
   },
   mounted() {},

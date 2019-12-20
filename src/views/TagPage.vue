@@ -124,6 +124,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.tagpage{
+  height: 100vh;
+}
 .contain {
   background: white;
   padding: 10px;

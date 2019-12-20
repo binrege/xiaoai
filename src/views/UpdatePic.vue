@@ -79,23 +79,21 @@ export default {
 <style scoped lang='scss'>
 .uploade {
   padding: 20px;
-
+  height: 100vh;
   background: white;
 }
 .elem {
   background: white;
   overflow: hidden;
-
-  
 }
 .titles {
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
-    width: 80%;
-    background: #ccc;
-    margin-top: 20px;
-    margin-bottom:10px;
-    height: 30px;
-  }
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  background: #ccc;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 30px;
+}
 </style>

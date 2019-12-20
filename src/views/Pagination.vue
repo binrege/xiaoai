@@ -63,7 +63,7 @@ export default {
       form: {
        
       },
-      oragin:{},
+      oragin:null,
       formLabelWidth: "120px",
       tableData: [],
       NewtableData: [],
@@ -98,15 +98,13 @@ export default {
     //取消
     cancel(){
       this.dialogFormVisible = false
-        this.form=this.oragin
+        this.NewtableData=JSON.parse(this.oragin)
     },
     //修改方法 
     handleEdit(index, row) {
-      this.oragin=row
+      this.oragin=JSON.stringify(this.NewtableData)
       this.dialogFormVisible = true;
       this.form=row
-      
-      console.log(index, row);
     },
     handleDelete(indexs, row) {
       this.NewtableData = this.tableData.filter((item, index) => {
