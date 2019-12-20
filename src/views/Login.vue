@@ -56,7 +56,7 @@
             <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item label="确认密码:" prop="checkPass">
-            <el-input type="password:" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
+            <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
           </el-form-item>
 
           <el-form-item>
@@ -204,7 +204,7 @@ export default {
           password: pwd,
           code: codes
         })
-        .then(res => {
+        .then(res => {//请求成功
           if (res.code === 200) {
             let users = {
               username: this.ruleForm.username,

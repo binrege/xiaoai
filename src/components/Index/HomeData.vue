@@ -1,7 +1,7 @@
 <template>
   <div class="ting">
     <div>
-      <ve-histogram :judge-width="true" width="400px" :data="chartData"></ve-histogram>
+      <ve-histogram :judge-width="true" width="40 0px" :data="chartData"></ve-histogram>
     </div>
   </div>
 </template>

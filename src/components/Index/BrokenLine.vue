@@ -1,6 +1,6 @@
 <template>
   <div class="Brok">
-    <div><ve-line :color="colors"  :data="chartData"></ve-line></div>
+    <div><ve-line :color="colors"  :data="chartData" :settings="charSettings"></ve-line></div>
     
   </div>
 </template>
@@ -9,6 +9,7 @@
 export default {
   name: "",
   data() {
+    
     this.colors = ['#c23531','#2f4554', '#61a0a8',
         '#d48265', '#91c7ae','#749f83', 
         '#ca8622', '#bda29a','#6e7074',
@@ -17,7 +18,11 @@ export default {
       chartData:{
         columns: ['date', 'expected', 'actual'],
         rows:[]
-      }
+      },
+       charSettings: {
+                    metrics: ['expected', 'actual'],
+                    // dimension:['expected','actual']
+                },
     };
   },
   props: {},
