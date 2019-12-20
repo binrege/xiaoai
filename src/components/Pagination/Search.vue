@@ -1,12 +1,10 @@
-// 分页表格
 <template>
- <div>
-<Search></Search>
+ <div class="search">
+    <input type="text" placeholder="请输入你要搜索的商品名称">
  </div>
 </template>
 
 <script>
-import Search from "../components/Pagination/Search";
  export default {
 name:'',
    data () {
@@ -18,7 +16,7 @@ name:'',
 
    },
    components: {
-Search
+
    },
    methods: {
 
@@ -36,5 +34,14 @@ Search
 </script>
 
 <style scoped lang='scss'>
-
+.search{
+  margin-top: 15px;
+  padding-left: 10px;
+  input{
+    width: 250px;
+    height: 30px;
+    padding:0 10px;
+    border:  none;
+  }
+}
 </style>

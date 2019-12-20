@@ -1,7 +1,8 @@
 <template>
-  <div class="rada">
-    <!-- 雷达图 -->
-    <div> <ve-radar :judge-width="true" width="400px" :data="chartData"></ve-radar></div>
+  <div class="ting">
+    <div>
+      <ve-histogram :judge-width="true" width="400px" :data="chartData"></ve-histogram>
+    </div>
   </div>
 </template>
 
@@ -9,21 +10,19 @@
 export default {
   name: "",
   data() {
-    
     return {
-        chartData: {
-          columns: ['name','sales', 'marketing', 'techology', 'delelopmer'],
-          rows: [
-
-          ]
-        }
+      chartData:{
+        columns: ['date', 'expected', 'actual'],
+        rows:[]
+      }
     };
   },
   props: {},
   components: {},
-  methods: { getdata() {
+  methods: {
+    getdata() {
       this.$axios
-        .req("radarChat")
+        .req("homeChat")
         .then(res => {
          this.chartData.rows = res.data;
           console.log(res);
@@ -42,9 +41,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.rada{
+.ting {
+  background: white;
   width: 400px;
   height: 400px;
-  background: white;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="ting">
-    <div> <ve-pie width="100px" :data="chartData" :settings="chartSettings"></ve-pie></div>
+    <div> <ve-pie  :judge-width="true" width="400px" :data="chartData" :settings="chartSettings"></ve-pie></div>
   </div>
 </template>
 
@@ -44,6 +44,8 @@ export default {
 
 <style scoped lang='scss'>
 .ting{
-  width: 400px!important;
+  background: white;
+  width: 380px;
+  height: 400px;
 }
 </style>

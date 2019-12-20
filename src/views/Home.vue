@@ -163,7 +163,7 @@ div{
     background: #545c64;
   padding:20px;
   // width: 150px;
-  height:690px;
+
 }
 .activeItem{
   
@@ -173,6 +173,6 @@ div{
   padding:15px;
  background: #ccc;
   width: 90%;
-  height: 100vh;
+  
 }
 </style>

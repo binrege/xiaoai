@@ -5,28 +5,29 @@
         <div class="iconfont icon-lianxiren"></div>
         <div>
           <div>New Visits</div>
-          <div>{{setCharts(datas.visits)}}</div>
+          <countTo :startVal='datas.visits-200' :endVal='datas.visits' :duration='3000'></countTo>
         </div>
       </div>
       <div>
         <div class="iconfont icon-xiaoxi"></div>
         <div>
           <div>Messages</div>
-          <div>{{setCharts(datas.messages)}}</div>
+          <countTo :startVal='datas.messages-200' :endVal='datas.messages' :duration='3000'></countTo>
+        
         </div>
       </div>
       <div>
         <div class="iconfont icon-qian01"></div>
         <div>
           <div>Purchases</div>
-          <div>{{setCharts(datas.purchases)}}</div>
+           <countTo :startVal='datas.purchases-200' :endVal='datas.purchases' :duration='3000'></countTo>
         </div>
       </div>
       <div>
         <div class="iconfont icon-gouwuche"></div>
         <div>
           <div>Shopping</div>
-          <div>{{setCharts(datas.shopping)}}</div>
+           <countTo :startVal='datas.shopping-200' :endVal='datas.shopping' :duration='3000'></countTo>
         </div>
       </div>
     </div>
@@ -34,6 +35,7 @@
 </template>
 
 <script>
+import countTo from 'vue-count-to';
 export default {
   name: "top",
   data() {
@@ -42,7 +44,7 @@ export default {
     };
   },
   props: {},
-  components: {},
+  components: {countTo},
   methods: {
     getdata() {
       this.$axios
