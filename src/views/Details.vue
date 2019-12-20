@@ -87,8 +87,8 @@
 
       <el-form-item>
         <div class="btn">
-          <el-button @click="resetForm('ruleForm')">重置</el-button>
-          <el-button type="primary" @click="submitForm('ruleForm')">发布</el-button>
+          <el-button @click="resetForm">返回</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">修改</el-button>
         </div>
       </el-form-item>
     </el-form>
@@ -100,6 +100,7 @@ export default {
   name: "",
   data() {
     return {
+      ArticleData:{},
       value: "",
       value2: "",
       pickerOptions: {
@@ -129,52 +130,46 @@ export default {
         ]
       },
       ruleForm: {
-        title: "",
-        abstract: "",
-        author: "",
-        category: "",
-        source: "",
-        star: ""
+       
       },
       rules: {
-        title: [{ required: true, message: "请输入文章标题", trigger: "blur" }],
-        abstract: [
-          { required: true, message: "请输入文章摘要", trigger: "blur" }
-        ],
-        author: [
-          {
-            required: true,
-            message: "请输入作者",
-            trigger: "blur"
-          }
-        ],
-        category: [
-          {
-            required: true,
-            message: "请选择类目",
-            trigger: "blur"
-          }
-        ],
-        source: [
-          {
-            required: true,
-            message: "请选择来源",
-            trigger: "blur"
-          }
-        ],
-        star: [{ required: true, message: "请选择重要性", trigger: "blur" }],
-        desc: [{ required: true, message: "请填写活动形式", trigger: "blur" }]
+      //   title: [{ required: true, message: "请输入文章标题", trigger: "blur" }],
+      //   abstract: [
+      //     { required: true, message: "请输入文章摘要", trigger: "blur" }
+      //   ],
+      //   author: [
+      //     {
+      //       required: true,
+      //       message: "请输入作者",
+      //       trigger: "blur"
+      //     }
+      //   ],
+      //   category: [
+      //     {
+      //       required: true,
+      //       message: "请选择类目",
+      //       trigger: "blur"
+      //     }
+      //   ],
+      //   source: [
+      //     {
+      //       required: true,
+      //       message: "请选择来源",
+      //       trigger: "blur"
+      //     }
+      //   ],
+      //   star: [{ required: true, message: "请选择重要性", trigger: "blur" }],
+      //   desc: [{ required: true, message: "请填写活动形式", trigger: "blur" }]
       }
     };
   },
   props: {},
   components: {},
   methods: {
+    //修改文章
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          // console.log(typeof this.$dayjs(this.value2).valueOf());
-          // console.log(typeof this.$dayjs(new Date()).valueOf());
           if (
             this.$dayjs(this.value2).valueOf() >
             this.$dayjs(new Date()).valueOf()
@@ -190,29 +185,31 @@ export default {
                 message: "请输入内容"
               });
             } else {
-              console.log(this.ruleForm.source);
+              //console.log(this.ruleForm.source);
               this.$axios
-                .req("article/create", {
+                .req("article/update",{
+                  id:this.$route.query.id,
                   title: this.ruleForm.title,
                   abstract: this.ruleForm.abstract,
                   author: this.ruleForm.author,
                   category: this.ruleForm.category,
                   source: this.ruleForm.source,
-                  star: Number(this.ruleForm.star),
+                  star: this.ruleForm.star,
                   text: this.$refs.editor.d_value,
                   date: this.$dayjs(this.value2).format("YYYY-MM-DD HH:mm:ss")
                 })
                 .then(res => {
-                  if (res.code === 200) {
+                  console.log(res);
+                  if (res.success ===true) {
                     this.$message({
                       type: "success",
-                      message: "发布成功"
+                      message: "修改成功"
                     });
                     this.$router.push("/");
                   } else {
                     this.$message({
                       type: "error",
-                      message: "发布失败"
+                      message: "修改失败"
                     });
                   }
                   console.log(res);
@@ -228,10 +225,8 @@ export default {
         }
       });
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
-      this.$refs.editor.d_value = "";
-      this.$refs.editor.d_value = "";
+    resetForm(){
+        this.$router.push("/published")
     },
     updateDoc(markdown, html) {
       // 此时会自动将 markdown 和 html 传递到这个方法中
@@ -265,9 +260,28 @@ export default {
         //得到相应的html/文件
         console.log(this.$refs.md.d_render);
       });
+    },
+
+ //获取文章数据
+    getdata() {
+      this.$axios
+        .req("article/article", {
+          _id: this.$route.query.id
+        })
+        .then(res => {
+          this.ruleForm = res.data;
+          this.value=this.ruleForm.text
+          this.value2=this.ruleForm.date
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
-  mounted() {},
+  mounted() {
+    this.getdata();
+  },
   watch: {},
   computed: {}
 };

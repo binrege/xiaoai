@@ -1,6 +1,6 @@
 <template>
   <div class="tagpage">
-    <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tabs v-model="activeName">
       <el-tab-pane :label="'未读消息('+getmsg(0).length+')'" name="first">
         <div v-if="getmsg(0).length!==0" class="contain">
           <div class="msgItem" v-for="(item,index) in getmsg(0)" :key="index">

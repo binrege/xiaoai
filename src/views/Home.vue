@@ -7,9 +7,15 @@
     </div>
     <div class="contain">
       <div class="asider-left">
-        <div class="asiderItem" :class="{activeItem:Number(ids)===index}" @click="clickBar(index,item.path)"  v-for="(item,index) in siderList" :key="index">
-            <div :class="item.icon"></div>
-            <div>{{item.name}}</div>
+        <div
+          class="asiderItem"
+          :class="{activeItem:Number(ids)===index}"
+          @click="clickBar(index,item.path)"
+          v-for="(item,index) in siderList"
+          :key="index"
+        >
+          <div :class="item.icon"></div>
+          <div>{{item.name}}</div>
         </div>
       </div>
       <div class="asider-right">
@@ -25,11 +31,11 @@ export default {
   data() {
     return {
       users: {},
-      ids:0,
+      ids: 0,
       siderList: [
         {
           id: 1,
-          path: "/",
+          path: "/index",
           icon: "el-icon-location",
           name: "首页"
         },
@@ -77,7 +83,7 @@ export default {
         },
         {
           id: 9,
-          path: "/login",
+          path: "/exist",
           icon: "el-icon-delete",
           name: "退出系统"
         }
@@ -109,19 +115,22 @@ export default {
         return "该睡觉了 " + username + "   登录时间:" + teime;
       }
     },
-    clickBar(val,path){
-      this.ids=val
-      localStorage.setItem("ids",val)
-      this.$router.push(path)
-
-
+    clickBar(val, path) {
+      console.log("/"+this.$route.name);
+      if ("/"+this.$route.name !== path) {
+        this.ids = val;
+        localStorage.setItem("ids", val);
+        this.$router.push(path);
+      }else{
+        return
+      }
     }
   },
   mounted() {
     //拿到当前登录用户
     this.users = JSON.parse(localStorage.getItem("users"));
-    if(localStorage.getItem("ids")){
-      this.ids=localStorage.getItem("ids")
+    if (localStorage.getItem("ids")) {
+      this.ids = localStorage.getItem("ids");
     }
   },
   watch: {},
@@ -139,40 +148,37 @@ export default {
   color: white;
   padding: 0 20px;
 }
-.contain{
+.contain {
   display: flex;
   justify-content: space-between;
   width: 100vm;
-  
+  height: 100vh;
+
   overflow: hidden;
 }
-.asiderItem{
+.asiderItem {
   cursor: pointer;
   height: 50px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-div{
-  margin-right: 10px;
+  div {
+    margin-right: 10px;
+  }
+  color: white;
 }
-  color:white;
-
-}
-.asider-left{
+.asider-left {
   width: 10%;
-    background: #545c64;
-  padding:20px;
+  background: #545c64;
+  padding: 20px;
   // width: 150px;
-
 }
-.activeItem{
-  
-  color:#ffd04b;
+.activeItem {
+  color: #ffd04b;
 }
-.asider-right{
-  padding:15px;
- background: #ccc;
+.asider-right {
+  padding: 15px;
+  background: #ccc;
   width: 90%;
-  
 }
 </style>

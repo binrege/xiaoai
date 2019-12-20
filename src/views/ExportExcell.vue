@@ -23,7 +23,15 @@
           </download-excel>
         </div>
         <div>
+          <download-excel
+            class="export-excel-wrapper"
+            :data="NewtableData"
+            name="filename.csv"
+          >
+            <!-- 上面可以自定义自己的样式，还可以引用其他组件button -->
           <input class="exportCls" type="button" value="导出csv" />
+          </download-excel>
+         
         </div>
       </div>
     </div>
