@@ -114,7 +114,7 @@ export default {
     },
     //更新分页组件传过来展示到首页的数据
     updates(data) {
-      console.log(data);
+      // console.log(data);
       this.NewtableData = data[0];
       this.prePages = data[1];
     }

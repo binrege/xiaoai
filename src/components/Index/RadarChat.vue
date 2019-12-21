@@ -26,7 +26,7 @@ export default {
         .req("radarChat")
         .then(res => {
          this.chartData.rows = res.data;
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);

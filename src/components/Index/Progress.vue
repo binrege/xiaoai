@@ -37,7 +37,7 @@ export default {
         .req("progress")
         .then(res => {
           this.datas = res.data;
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);

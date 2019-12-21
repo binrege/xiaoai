@@ -199,7 +199,7 @@ export default {
                   date: this.$dayjs(this.value2).format("YYYY-MM-DD HH:mm:ss")
                 })
                 .then(res => {
-                  console.log(res);
+                  // console.log(res);
                   if (res.success ===true) {
                     this.$message({
                       type: "success",
@@ -212,7 +212,7 @@ export default {
                       message: "修改失败"
                     });
                   }
-                  console.log(res);
+                  // console.log(res);
                 })
                 .catch(err => {
                   console.log(err);
@@ -241,12 +241,12 @@ export default {
     // 绑定@imgAdd event
     $imgAdd(pos, $file) {
       console.log("触发图片上传");
-      console.log(pos);
-      console.log($file);
+      // console.log(pos);
+      // console.log($file);
       // 第一步.将图片上传到服务器.
       var formdata = new FormData();
       formdata.append("file", $file);
-      console.log(formdata);
+      // console.log(formdata);
       imgeApi(formdata).then(res => {
         // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
         /**
@@ -254,11 +254,11 @@ export default {
          * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
          * 2. 通过$refs获取: html声明ref : `<mavon-editor ref=md ></mavon-editor>，`$vm`为 `this.$refs.md`
          */
-        console.log(res.data);
+        // console.log(res.data);
         let url = "/server/" + res.data.data;
         this.$refs.md.$img2Url(pos, url); //相应的md格式的文件内容就是它绑定的变量
         //得到相应的html/文件
-        console.log(this.$refs.md.d_render);
+        // console.log(this.$refs.md.d_render);
       });
     },
 
@@ -272,7 +272,7 @@ export default {
           this.ruleForm = res.data;
           this.value=this.ruleForm.text
           this.value2=this.ruleForm.date
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);

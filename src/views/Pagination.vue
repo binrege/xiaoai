@@ -86,10 +86,6 @@ export default {
           this.NewtableData = this.tableData.filter((item, index) => {
             return index < this.prePages;
           });
-          // this.tableData = this.oldlist.filter((item, index) => {
-          //   return index < this.prePages;
-          // });
-          // console.log(res.data);
         })
         .catch(err => {
           console.log(err);
@@ -126,7 +122,7 @@ export default {
     },
     //更新分页组件传过来展示到首页的数据
     updates(data) {
-      console.log(data);
+      // console.log(data);
       this.NewtableData = data[0];
       this.prePages = data[1];
     },

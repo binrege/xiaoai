@@ -9,7 +9,10 @@ const routes = [{
         redirect: '/'
     }, {
         path: "/home",
-        redirect: '/'
+        redirect: '/',
+        meta: {
+            title: "首页"
+        }
     },
     {
         path: '/',
@@ -18,7 +21,10 @@ const routes = [{
             path: '/',
             name: 'index',
             component: () =>
-                import ('../views/Index.vue')
+                import ('../views/Index.vue'),
+            meta: {
+                title: "首页"
+            }
         }]
     },
     {
@@ -28,7 +34,10 @@ const routes = [{
             path: 'pagination',
             name: 'pagination',
             component: () =>
-                import ('../views/Pagination.vue')
+                import ('../views/Pagination.vue'),
+            meta: {
+                title: "分页表格"
+            }
         }]
     },
     {
@@ -38,7 +47,10 @@ const routes = [{
             path: 'tagPage',
             name: 'tagPage',
             component: () =>
-                import ('../views/TagPage.vue')
+                import ('../views/TagPage.vue'),
+            meta: {
+                title: "标签"
+            }
         }]
     },
     {
@@ -48,7 +60,10 @@ const routes = [{
             path: 'updatePic',
             name: 'updatePic',
             component: () =>
-                import ('../views/UpdatePic.vue')
+                import ('../views/UpdatePic.vue'),
+            meta: {
+                title: "图片上传"
+            }
         }]
     },
     {
@@ -58,7 +73,10 @@ const routes = [{
             path: 'published',
             name: 'published',
             component: () =>
-                import ('../views/Published.vue')
+                import ('../views/Published.vue'),
+            meta: {
+                title: "文章"
+            }
         }]
     },
     {
@@ -68,7 +86,10 @@ const routes = [{
             path: 'publish',
             name: 'publish',
             component: () =>
-                import ('../views/Publish.vue')
+                import ('../views/Publish.vue'),
+            meta: {
+                title: "发布文章"
+            }
         }]
     },
     {
@@ -78,7 +99,10 @@ const routes = [{
             path: 'details',
             name: 'details',
             component: () =>
-                import ('../views/Details.vue')
+                import ('../views/Details.vue'),
+            meta: {
+                title: "详情"
+            }
         }]
     },
     {
@@ -88,7 +112,10 @@ const routes = [{
             path: 'statics',
             name: 'statics',
             component: () =>
-                import ('../views/Statics.vue')
+                import ('../views/Statics.vue'),
+            meta: {
+                title: "统计"
+            }
         }]
     },
     {
@@ -98,7 +125,10 @@ const routes = [{
             path: 'exportExcell',
             name: 'exportExcell',
             component: () =>
-                import ('../views/ExportExcell.vue')
+                import ('../views/ExportExcell.vue'),
+            meta: {
+                title: "导出数据"
+            }
         }]
     },
     {
@@ -118,7 +148,10 @@ const routes = [{
             path: 'check',
             name: 'check',
             component: () =>
-                import ('../views/Check.vue')
+                import ('../views/Check.vue'),
+            meta: {
+                title: "查看文章"
+            }
         }]
     },
 
@@ -133,7 +166,19 @@ const routes = [{
         path: '/login',
         name: 'login',
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/Login.vue')
+            import ( /* webpackChunkName: "about" */ '../views/Login.vue'),
+        meta: {
+            title: "登录"
+        }
+    },
+    {
+        path: '*',
+        name: 'error',
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../views/Error.vue'),
+        meta: {
+            title: "登录"
+        }
     },
 
 
@@ -174,7 +219,7 @@ router.beforeEach((to, from, next) => {
     } else {
         users ? next() : next("/login")
     }
-
+    document.title = to.meta.title
 
 
 })

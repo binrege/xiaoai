@@ -103,6 +103,9 @@ export default {
       value: "",
       value2: "",
       pickerOptions: {
+        disabledDate(time) {
+          return time.getTime() > Date.now();
+        },
         shortcuts: [
           {
             text: "今天",
@@ -175,55 +178,44 @@ export default {
         if (valid) {
           // console.log(typeof this.$dayjs(this.value2).valueOf());
           // console.log(typeof this.$dayjs(new Date()).valueOf());
-          if (
-            this.$dayjs(this.value2).valueOf() >
-            this.$dayjs(new Date()).valueOf()
-          ) {
+          if (this.$refs.editor.d_value === "") {
             this.$message({
               type: "warn",
-              message: "请选择不超过当前时间的日期"
+              message: "请输入内容"
             });
           } else {
-            if (this.$refs.editor.d_value === "") {
-              this.$message({
-                type: "warn",
-                message: "请输入内容"
+            this.$axios
+              .req("article/create", {
+                title: this.ruleForm.title,
+                abstract: this.ruleForm.abstract,
+                author: this.ruleForm.author,
+                category: this.ruleForm.category,
+                source: this.ruleForm.source,
+                star: Number(this.ruleForm.star),
+                text: this.$refs.editor.d_value,
+                date: this.$dayjs(this.value2).format("YYYY-MM-DD HH:mm:ss")
+              })
+              .then(res => {
+                if (res.code === 200) {
+                  this.$message({
+                    type: "success",
+                    message: "发布成功"
+                  });
+                  this.$router.push("/");
+                } else {
+                  this.$message({
+                    type: "error",
+                    message: "发布失败"
+                  });
+                }
+                // console.log(res);
+              })
+              .catch(err => {
+                console.log(err);
               });
-            } else {
-              console.log(this.ruleForm.source);
-              this.$axios
-                .req("article/create", {
-                  title: this.ruleForm.title,
-                  abstract: this.ruleForm.abstract,
-                  author: this.ruleForm.author,
-                  category: this.ruleForm.category,
-                  source: this.ruleForm.source,
-                  star: Number(this.ruleForm.star),
-                  text: this.$refs.editor.d_value,
-                  date: this.$dayjs(this.value2).format("YYYY-MM-DD HH:mm:ss")
-                })
-                .then(res => {
-                  if (res.code === 200) {
-                    this.$message({
-                      type: "success",
-                      message: "发布成功"
-                    });
-                    this.$router.push("/");
-                  } else {
-                    this.$message({
-                      type: "error",
-                      message: "发布失败"
-                    });
-                  }
-                  console.log(res);
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-            }
           }
         } else {
-          console.log("error submit!!");
+          // console.log("error submit!!");
           return false;
         }
       });

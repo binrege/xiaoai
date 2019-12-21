@@ -125,16 +125,9 @@ export default {
               });
             }
 
-            console.log(
-              index + "---" + this.$dayjs(item.date).format("YYYY-MM-DD")
-            );
             if (
               this.chartData.rows.every((items, indexs) => {
-                console.log(
-                  indexs +
-                    "+++++" +
-                    this.$dayjs(items.date).format("YYYY-MM-DD")
-                );
+               
                 return (
                   this.$dayjs(items.date).format("YYYY-MM-DD") !==
                   this.$dayjs(item.date).format("YYYY-MM-DD")
@@ -153,7 +146,7 @@ export default {
           this.Original = this.ArticleData.filter(item => {
             return item.source === "原创";
           });
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);

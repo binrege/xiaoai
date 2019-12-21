@@ -160,7 +160,7 @@ export default {
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
-        console.log(valid);
+        // console.log(valid);
         if (valid) {
           if (this.ids === 1) {
             //登录
@@ -228,7 +228,7 @@ export default {
               message: "验证码错误"
             });
           }
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);
@@ -292,7 +292,9 @@ export default {
   align-items: center;
   font-size: 20px;
 }
-
+.loginItem>div{
+  cursor: pointer;
+}
 .el-input {
   width: 300px;
 }

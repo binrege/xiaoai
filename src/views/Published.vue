@@ -61,7 +61,7 @@ export default {
         .then(res => {
           this.ArticleData = res.data;
           this.ArticleData.reverse()
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);
@@ -72,7 +72,7 @@ export default {
      this.$axios
         .req("article/delete",{_id:id})
         .then(res => {
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);

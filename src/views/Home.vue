@@ -116,7 +116,7 @@ export default {
       }
     },
     clickBar(val, path) {
-      console.log("/"+this.$route.name);
+      // console.log("/"+this.$route.name);
       if ("/"+this.$route.name !== path) {
         this.ids = val;
         localStorage.setItem("ids", val);

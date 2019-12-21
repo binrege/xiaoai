@@ -41,7 +41,7 @@ export default {
         })
         .then(res => {
           this.ArticleData = res.data;
-          console.log(res);
+          // console.log(res);
         })
         .catch(err => {
           console.log(err);
